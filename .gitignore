@@ -121,3 +121,4 @@ work_dirs/
 # add by jedi008 
 *.ckpt
 logs.txt
+*.mp4
