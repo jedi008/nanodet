@@ -12,6 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+#  导出指令： python .\tools\export_torchscript.py --model_path weights\nanodet-plus-m-1.5x_416_checkpoint.ckpt --cfg config\nanodet-plus-m-1.5x_416.yml --input_shape 416,416
+
+import sys
+import os
+from pathlib import Path
+FILE = Path(__file__).resolve()
+ROOT = FILE.parents[0].parents[0]  # YOLOv5 root directory
+print("ROOT: ",ROOT)
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))  # add ROOT to PATH
+ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
+
+
 import argparse
 import os
 
