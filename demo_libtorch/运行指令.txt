@@ -1,0 +1,1 @@
+ .\nanodet_demo.exe 1 D:\TestData\image
