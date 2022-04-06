@@ -3,6 +3,12 @@ set(CMAKE_CXX_STANDARD 14)
 
 project(nanodet_demo)
 
+MESSAGE(STATUS "current platform: Windows")
+#如果设置了环境变量可以省略以下步奏
+set(OpenCV_DIR "D:/opencv452/build")
+set(InferenceEngine_DIR "C:/Program Files (x86)/Intel/openvino_2022.1.0.643/runtime/cmake")
+set(ngraph_DIR "C:/Program Files (x86)/Intel/openvino_2022.1.0.643/runtime/cmake")
+
 find_package(OpenCV REQUIRED)
 find_package(InferenceEngine REQUIRED)
 find_package(ngraph REQUIRED)
@@ -21,3 +27,4 @@ target_link_libraries(
     ${NGRAPH_LIBRARIES}
     ${OpenCV_LIBS}
 )
+

@@ -122,3 +122,7 @@ work_dirs/
 *.ckpt
 logs.txt
 *.mp4
+*.onnx
+*.bin
+*.mapping
+*.xml

@@ -12,6 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# 导出 : python ./tools/export_onnx.py --cfg_path config\nanodet-plus-m-1.5x_416.yml --model_path weights\nanodet-plus-m-1.5x_416_checkpoint.ckpt
+#        python ./tools/export_onnx.py --cfg_path config\legacy_v0.x_configs\EfficientNet-Lite\nanodet-EfficientNet-Lite2_512.yml --model_path weights\nanodet-EfficientNet-Lite2_512.ckpt
+import sys
+import os
+from pathlib import Path
+FILE = Path(__file__).resolve()
+ROOT = FILE.parents[0].parents[0]  # YOLOv5 root directory
+print("ROOT: ",ROOT)
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))  # add ROOT to PATH
+ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
+
+
+
 import argparse
 import os
 
