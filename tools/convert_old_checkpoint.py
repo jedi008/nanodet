@@ -12,6 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+import sys
+import os
+from pathlib import Path
+FILE = Path(__file__).resolve()
+ROOT = FILE.parents[0].parents[0]  # YOLOv5 root directory
+print("ROOT: ",ROOT)
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))  # add ROOT to PATH
+ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
+
+
 import argparse
 
 import torch
