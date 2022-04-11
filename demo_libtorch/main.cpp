@@ -217,6 +217,8 @@ void draw_bboxes(const cv::Mat& bgr, const std::vector<BoxInfo>& bboxes, object_
             cv::FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(255, 255, 255));
     }
 
+    //cv::imwrite("test.png", image);  // д��ͼƬ
+    cv::namedWindow("image", cv::WINDOW_AUTOSIZE);
     cv::imshow("image", image);
 }
 
@@ -227,6 +229,9 @@ int image_demo(NanoDet& detector, const char* imagepath)
 
     std::vector<std::string> filenames;
     cv::glob(imagepath, filenames, false);
+    
+    std::cout << "imagepath: " << imagepath << std::endl;
+    std::cout << "filenames: " << filenames << std::endl;
 
     for (auto img_name : filenames)
     {
@@ -238,7 +243,7 @@ int image_demo(NanoDet& detector, const char* imagepath)
         }
         object_rect effect_roi;
         cv::Mat resized_img;
-        resize_uniform(image, resized_img, cv::Size(320, 320), effect_roi);
+        resize_uniform(image, resized_img, cv::Size(416, 416), effect_roi);
         auto results = detector.detect(resized_img, 0.4, 0.5);
         draw_bboxes(image, results, effect_roi);
         cv::waitKey(0);
@@ -297,6 +302,8 @@ int benchmark(NanoDet& detector)
     {
         auto start = std::chrono::steady_clock::now();
         std::vector<BoxInfo> results;
+
+        std::cout << "image.size(): " << image.size() << std::endl;
         results = detector.detect(image, 0.4, 0.5);
         auto end = std::chrono::steady_clock::now();
         double time = std::chrono::duration<double, std::milli>(end - start).count();
@@ -320,7 +327,7 @@ int main(int argc, char** argv)
         return -1;
     }
     std::cout<<"start init model"<<std::endl;
-    auto detector = NanoDet("../model/nanodet_m.pt");
+    auto detector = NanoDet("../model/nanodet.torchscript_416.pth");
     std::cout<<"success"<<std::endl;
 
     int mode = atoi(argv[1]);
