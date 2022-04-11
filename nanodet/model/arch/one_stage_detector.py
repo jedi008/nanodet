@@ -53,7 +53,7 @@ class OneStageDetector(nn.Module):
             preds = self(meta["img"])
             torch.cuda.synchronize()
             time2 = time.time()
-            print("preds size is: ", preds.shape)
+            print("preds size is: ", preds.shape) # 416:torch.Size([1, 3598, 112])
             print("forward time: {:.3f}s".format((time2 - time1)), end=" | ")
             results = self.head.post_process(preds, meta)
             torch.cuda.synchronize()
