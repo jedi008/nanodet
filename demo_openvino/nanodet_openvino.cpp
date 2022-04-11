@@ -120,7 +120,7 @@ void NanoDet::preprocess(cv::Mat& image, InferenceEngine::Blob::Ptr& blob)
 
 std::vector<BoxInfo> NanoDet::detect(cv::Mat image, float score_threshold, float nms_threshold)
 {
-    //auto start = std::chrono::steady_clock::now();
+    auto start = std::chrono::steady_clock::now();
 
     InferenceEngine::Blob::Ptr input_blob = infer_request_.GetBlob(input_name_);
     preprocess(image, input_blob);
@@ -157,9 +157,9 @@ std::vector<BoxInfo> NanoDet::detect(cv::Mat image, float score_threshold, float
         }
     }
 
-    //auto end = std::chrono::steady_clock::now();
-    //double time = std::chrono::duration<double, std::milli>(end - start).count();
-    //std::cout << "inference time:" << time << "ms" << std::endl;
+    auto end = std::chrono::steady_clock::now();
+    double time = std::chrono::duration<double, std::milli>(end - start).count();
+    std::cout << "inference time:" << time << "ms" << std::endl;
     return dets;
 }
 

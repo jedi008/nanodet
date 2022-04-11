@@ -3,4 +3,5 @@
 3. 转换为openvino使用的文件：
     cd  C:\Program Files (x86)\Intel\openvino_2021.4.752\deployment_tools\model_optimizer
     python mo_onnx.py --input_model D:\GitHubProtects\008projects\nanodet\nanodet.onnx --mean_values [103.53,116.28,123.675] --scale_values [57.375,57.12,58.395] --output output --data_type FP32 --output_dir D:\GitHubProtects\008projects\nanodet\weights
+    python mo_onnx.py --input_model D:\GitHubProtects\008projects\nanodet\nanodet.onnx --mean_values [127.0,127.0,127.0] --scale_values [128.0,128.0,128.0] --output output --data_type FP32 --output_dir D:\GitHubProtects\008projects\nanodet\weights
 4. 生成的文件拷贝到cmake build 生成的exe文件下运行成功
