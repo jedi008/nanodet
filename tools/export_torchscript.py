@@ -14,6 +14,7 @@
 
 
 #  导出指令： python .\tools\export_torchscript.py --model_path weights\nanodet-plus-m-1.5x_416_checkpoint.ckpt --cfg config\nanodet-plus-m-1.5x_416.yml --input_shape 416,416
+#            python .\tools\export_torchscript.py --model_path weights\nanodet-EfficientNet-Lite2_512.ckpt --cfg config\legacy_v0.x_configs\EfficientNet-Lite\nanodet-EfficientNet-Lite2_512.yml --input_shape 512,512
 
 import sys
 import os
